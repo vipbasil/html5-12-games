@@ -99,12 +99,10 @@ export default class Game extends Phaser.Scene {
     bottomPipe.setVelocityX(-this.pipeSpeed);
 
     const zoneHeight = height - this.groundHeight;
-    const scoreZone = this.add.zone(this.pipeSpawnX + 50, zoneHeight / 2, 10, zoneHeight);
-    this.physics.add.existing(scoreZone);
-    scoreZone.body.setAllowGravity(false);
-    scoreZone.body.setImmovable(true);
-    scoreZone.body.setVelocityX(-this.pipeSpeed);
-    this.scoreZones.add(scoreZone);
+    const scoreZone = this.scoreZones.create(this.pipeSpawnX + 40, zoneHeight / 2, 'scoreZone');
+    scoreZone.setVisible(false);
+    scoreZone.body.setSize(12, zoneHeight, true);
+    scoreZone.setVelocityX(-this.pipeSpeed);
   }
 
   onScoreZone(zone) {
